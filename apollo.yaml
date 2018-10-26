@@ -1,0 +1,55 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: springboot-graphql-backend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: springboot-graphql
+    spec:
+      containers:
+      - name: springboot-graphql
+        image: ajeshgeorge22/springboot-graphql
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-graphql
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+  selector:
+    app: springboot-graphql
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: apollo-engine
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: apollo-engine
+    spec:
+      containers:
+      - name: apollo-engine
+        image: ajeshgeorge22/apollo-engine
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apollo-engine
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: apollo-engine

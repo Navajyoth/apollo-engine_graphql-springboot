@@ -1,0 +1,15 @@
+{
+  "name": "gpql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-engine": "^1.0.3",
+    "express": "^4.16.3"
+  }
+}
